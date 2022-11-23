@@ -40,9 +40,38 @@ const postNewUser = (req, res) => {
     });
   }
 };
+const deleteUser = (req, res) => {
+  const id = +req.params.id;
+  const data = userControllers.deleteUser(id);
+  if (!data) {
+    res.status(404).json({
+      message: "Invalid ID",
+    });
+  } else {
+    res.status(200).json({ message: `User with ID:${id} was Deleted` });
+  }
+};
+const putUser = (req, res) => {
+  const id = +req.params.id;
+  const { first_name, last_name, email, password, birthday } = req.body;
+  const data = userControllers.putUser(
+    {
+      first_name,
+      last_name,
+      email,
+      password,
+      birthday,
+    },
+    id
+  );
+
+  res.status(200).json(data);
+};
 
 module.exports = {
   getAllUsers,
   getUserById,
   postNewUser,
+  deleteUser,
+  putUser,
 };

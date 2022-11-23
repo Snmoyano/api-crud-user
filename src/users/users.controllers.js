@@ -29,8 +29,28 @@ const createUser = (data) => {
   usersDB.push(newUser);
   return newUser;
 };
+const deleteUser = (id) => {
+  const deleted = usersDB.findIndex((item) => item.id === id);
+  const search = usersDB.splice(deleted, 1);
+  return search;
+};
+const putUser = (data, id) => {
+  const put = usersDB.findIndex((item) => item.id === id);
+  const newUser = {
+    id: id++,
+    first_name: data.first_name,
+    last_name: data.last_name,
+    email: data.email,
+    password: data.password,
+    birthday: data.birthday,
+  };
+  const search = (usersDB[put] = newUser);
+  return search;
+};
 module.exports = {
   findAllsUsers,
   findUserById,
   createUser,
+  deleteUser,
+  putUser,
 };
