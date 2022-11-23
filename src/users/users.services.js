@@ -51,10 +51,10 @@ const deleteUser = (req, res) => {
     res.status(200).json({ message: `User with ID:${id} was Deleted` });
   }
 };
-const putUser = (req, res) => {
+const updateUser = (req, res) => {
   const id = +req.params.id;
   const { first_name, last_name, email, password, birthday } = req.body;
-  const data = userControllers.putUser(
+  const data = userControllers.updateUser(
     {
       first_name,
       last_name,
@@ -73,5 +73,5 @@ module.exports = {
   getUserById,
   postNewUser,
   deleteUser,
-  putUser,
+  updateUser,
 };

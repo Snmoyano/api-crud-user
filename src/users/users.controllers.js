@@ -34,7 +34,7 @@ const deleteUser = (id) => {
   const search = usersDB.splice(deleted, 1);
   return search;
 };
-const putUser = (data, id) => {
+const updateUser = (data, id) => {
   const put = usersDB.findIndex((item) => item.id === id);
   const newUser = {
     id: id++,
@@ -52,5 +52,5 @@ module.exports = {
   findUserById,
   createUser,
   deleteUser,
-  putUser,
+  updateUser,
 };
